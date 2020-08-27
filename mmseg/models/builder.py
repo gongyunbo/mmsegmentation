@@ -6,6 +6,7 @@ NECKS = Registry('neck')
 HEADS = Registry('head')
 LOSSES = Registry('loss')
 SEGMENTORS = Registry('segmentor')
+SEGMENTORS_DISTILL = Registry('segmentor_distill')
 
 
 def build(cfg, registry, default_args=None):
@@ -54,3 +55,7 @@ def build_loss(cfg):
 def build_segmentor(cfg, train_cfg=None, test_cfg=None):
     """Build segmentor."""
     return build(cfg, SEGMENTORS, dict(train_cfg=train_cfg, test_cfg=test_cfg))
+
+def build_segmentor_distill(cfg, train_cfg=None, test_cfg=None):
+    """Build knowledge distillation segmentors."""
+    return build(cfg, SEGMENTORS_DISTILL, dict(train_cfg=train_cfg, test_cfg=test_cfg))
